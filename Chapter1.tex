@@ -1134,8 +1134,164 @@
     Let \( A \) be an \( m \times n \) matrix and let \( x,y \in \mathbb{R}^n \). Prove that if \( Ax = 0 \) and \( y = A^Tb \) for some \( b \in \mathbb{R}^m \) then \( x \cdot y = 0 \).
     
     \begin{proof}
-        pending
+        \begin{align*}
+            x \cdot y &= y^Tx \\
+            &= \left( b^TA \right)x \\
+            &= b^T\left(Ax\right) \\
+            &= b^T 0 \\
+            &= 0
+        \end{align*}
     \end{proof}
 \end{exercise} %e.1.4.29
+
+\begin{exercise} \label{e1.4.30}
+    %
+\end{exercise} %e1.4.30
+
+\begin{exercise} \label{e1.4.31}
+    %
+\end{exercise} %e1.4.31
+
+\begin{exercise} \label{e1.4.32}
+    Suppose \( A \) is an \( m \times n \) matrix and \( x \in \mathbb{R}^n \) satisfies \( (A^TA)x = 0 \). Prove that \( Ax = 0 \).
+    
+    \begin{proof}
+        Note that \( A^TAx = 0 \) implies
+        \begin{align*}
+            0 &= A^TAx \cdot x \\
+            &= x \cdot (A^TA)^Tx \\
+            \intertext{and by symmetry of \( A^TA \) }
+            &= x \cdot A^TAx \\
+            &= x^TA^TAx \\
+            &= (Ax)^T(Ax) \\
+            &= \vert \vert Ax \vert \vert^2
+        \end{align*}
+        implying \( Ax = 0 \)
+    \end{proof}
+\end{exercise} %e1.4.32
+
+\begin{exercise} \label{e1.4.33}
+    Suppose \( A \) is a symmetric matrix satisfying \( A^2 = 0 \). Prove that \( A = 0 \). Give an example to show that the hypothesis of symmetry is required.
+    
+    \begin{proof}
+        Since \( A \) is symmetric, we have \( A^T = A \) and \( 0 = A^2 = A^TA \). Thus, by \ref{e1.4.32}
+        \begin{align*}
+            A^TA &= 0 \hspace{2mm} \forall x \\
+            \intertext{ implies }
+            Ax &= 0 \hspace{2mm} \forall x \\
+            \intertext{ implies }
+            A &= 0
+        \end{align*}
+    \end{proof}
+\end{exercise} %e1.4.33
+
+\begin{exercise} \label{e1.4.34}
+    We say an \( n \times n \) matrix \( A \) is \emph{orthogonal} if \( A^TA = I_n \).
+    
+    \begin{enumerate}
+        \item Prove that the column vectors \( a_1, \ldots, a_n \) of an orthogonal matrix \( A \) are unit vectors that are orthogonal to one another; i.e.,
+        \[ a_i \cdot a_j = \begin{cases} 1, &i=j \\ 0, &i\neq j \end{cases} \]
+        
+        \item Fill in the missing columns in the following matrices to make them orthogonal:
+        \[
+            \begin{bmatrix}
+                \frac{\sqrt{3}}{2} & ? \\ 
+                -\frac{1}{2} & ? 
+            \end{bmatrix},
+            \begin{bmatrix}
+                1 & 0 & ? \\ 
+                0 & -1 & ? \\ 
+                0 & 0 & ?
+            \end{bmatrix},
+            \begin{bmatrix}
+                \frac{1}{3} & ? & \frac{2}{3} \\
+                \frac{2}{3} & ? & -\frac{2}{3} \\
+                \frac{2}{3} & ? & \frac{1}{3}
+            \end{bmatrix}
+        \]
+        
+        \item Prove that any \( 2 \times 2 \) orthogonal matrix \( A \) must be of the form
+        \[
+            \begin{bmatrix}
+                \cos(\theta) & -\sin(\theta) \\
+                \sin(\theta) & \cos(\theta)
+            \end{bmatrix}
+            \text{ or }
+            \begin{bmatrix}
+                \cos(\theta) & \sin(\theta) \\
+                \sin(\theta) & -\cos(\theta)
+            \end{bmatrix}
+        \]
+        for some real \( \theta \).
+        
+        \item Prove that if \( A \) is an orthogonal \( 2 \times 2 \) matrix, then \( \mu_A: \mathbb{R}^2 \rightarrow \mathbb{R}^2 \) is either a rotation or the composition of a rotation and a reflection.
+        
+        \item Assume for now that \( A^T = A^{-1} \) when \( A \) is orthogonal (this is a consequence of a corollary from a future chapter in the book). Prove that the row vectors \( A_1, \ldots, A_n \) of an orthogonal matrix \( A \) are unit vectors that are orthogonal to one another.
+    \end{enumerate}
+    
+    \begin{proof}
+        \begin{enumerate}
+            \item pending
+            
+            \item pending
+            
+            \item pending
+            
+            \item pending
+            
+            \item pending
+        \end{enumerate}
+    \end{proof}
+\end{exercise} %e1.4.34
+
+\begin{exercise} \label{e1.4.35}
+    Recall the definition of orthogonal matrices from \ref{e1.4.34}
+    
+    \begin{enumerate}
+        \item Prove that if \( A \) and \( B \) are orthogonal \( n \times n \) matrices, then so is \( AB \).
+        
+        \item Prove that if \( A \) is an orthogonal matrix, then so is \( A^{-1} \)
+    \end{enumerate}
+    
+    \begin{proof}
+        \begin{enumerate}
+            \item pending
+            
+            \item pending
+        \end{enumerate}
+    \end{proof}
+\end{exercise} %e1.4.35
+
+\begin{exercise} \label{e1.4.36}
+    \begin{enumerate}
+        \item Prove that the only matrix that is both symmetric and skew-symmetric is \( 0 \).
+        
+        \item Given any square matrix \( A \), prove that \( S = \frac{1}{2}(A+A^T) \) is symmetric and \( K = \frac{1}{2}(A-A^T) \) is skew-symmetric.
+        
+        \item Prove that any square matrix \( A \) can be written in the form \( A = S + K \), where \( S \) is symmetric and \( K \) is skew-symmetric.
+        
+        \item Prove that the expression in part \( c \) is unique.
+    \end{enumerate}
+    
+    \begin{proof}
+        \begin{enumerate}
+            \item pending
+            
+            \item pending
+            
+            \item pending
+            
+            \item pending
+        \end{enumerate}
+    \end{proof}
+\end{exercise} %e1.4.36
+
+\begin{exercise} \label{e1.4.37}
+    Suppose \( A \) is an \( n \times n \) matrix that commutes with all \( n \times n \) matrices; i.e. \( AB = BA \) for all \( B \in \mathcal{M}_{n \times n} \). What can you say about \( A \)?
+    
+    \begin{proof}
+        pending
+    \end{proof}
+\end{exercise} %e1.4.37
 
 \subsection{Introduction to Determinants and the Cross Product}
