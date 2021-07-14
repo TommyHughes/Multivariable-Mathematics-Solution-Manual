@@ -1250,15 +1250,41 @@
                     0 & 0 & \pm 1
                 \end{bmatrix},
                 \begin{bmatrix}
-                    \frac{1}{3} & ? & \frac{2}{3} \\
-                    \frac{2}{3} & ? & -\frac{2}{3} \\
-                    \frac{2}{3} & ? & \frac{1}{3}
+                    \frac{1}{3} & \pm \frac{2}{3} & \frac{2}{3} \\
+                    \frac{2}{3} & \pm \frac{1}{3} & -\frac{2}{3} \\
+                    \frac{2}{3} & \mp \frac{2}{3} & \frac{1}{3}
                 \end{bmatrix}
             \]
             
-            \item pending
+            \item By part 1. we know that \( a_1 \) and \( a_2 \) are orthogonal and lie on the unit circle. Thus, they are a rotation or a reflection and rotation of the vectors \( e_1 \) and \( e_2 \), by the same angle \( \theta \) which implies the result.
             
-            \item pending
+            \begin{center}
+                \begin{tikzpicture}
+                    \draw[dashed,thick] (0,0) circle[radius=100pt];
+                    
+                    \draw[thick,->] (0,0)
+                    -- (1.75,0) node[anchor=north] {$e_1$}
+                    -- (3.5,0);
+                    
+                    \draw[thick,->] (0,0)
+                    -- (0,1.75) node[anchor=east] {$e_2$}
+                    -- (0,3.5);
+                    
+                    \draw[red,thick,->] (0,0)
+                    -- (1.23743686708,1.23743686708)
+                    -- (2.47487373415,2.47487373415);
+                    
+                    \node[red] at (1.7,1.23743686708) {$\pm e_i$};
+                    
+                    \draw[red,thick,->] (0,0)
+                    -- (-1.23743686708,1.23743686708)
+                    -- (-2.47487373415,2.47487373415);
+                    
+                    \node[red] at (-1.7,1.23743686708) {$\pm e_j$};
+                \end{tikzpicture}
+            \end{center}
+            
+            \item This is an immediate corollary of part 3.
             
             \item pending
         \end{enumerate}
