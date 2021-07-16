@@ -1284,9 +1284,21 @@
                 \end{tikzpicture}
             \end{center}
             
-            \item This is an immediate corollary of part 3.
+            \item This is an immediate corollary of part 3 since \( \mu_A(x) = Ax \).
             
-            \item pending
+            \item Since \( A^T = A^{-1} \) it follows that
+            \begin{align*}
+                A_i \cdot A_j &= \left[ AA^T \right]_{ij} \\
+                &= [I_n]_{ij}
+            \end{align*}
+            so that
+            \[
+            A_i \cdot A_j = 
+            \begin{cases}
+                1 &, i=j \\
+                0 &otherwise
+            \end{cases}
+            \]
         \end{enumerate}
     \end{proof}
 \end{exercise} %e1.4.34
