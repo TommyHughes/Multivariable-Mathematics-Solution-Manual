@@ -1296,7 +1296,7 @@
             A_i \cdot A_j = 
             \begin{cases}
                 1 &, i=j \\
-                0 &otherwise
+                0 &, \text{otherwise}
             \end{cases}
             \]
         \end{enumerate}
@@ -1314,9 +1314,16 @@
     
     \begin{proof}
         \begin{enumerate}
-            \item pending
+            \item \[ (AB)^T(AB) = (B^TA^T)(AB) = B^T(A^TA)B = B^TB = I_n \]
             
-            \item pending
+            \item Observe that
+            \begin{align*}
+                A^{-1}A &= A^TA \\
+                A^{-1}AA^{-1} &= A^TAA^{-1} \\
+                A^{-1} &= A^T
+            \end{align*}
+            So that
+            \[ \left( A^{-1} \right)^T A^{-1} = \left( A^T \right)^T A^{-1} = AA^{-1} = I_n \]
         \end{enumerate}
     \end{proof}
 \end{exercise} %e1.4.35
@@ -1334,13 +1341,51 @@
     
     \begin{proof}
         \begin{enumerate}
-            \item pending
+            \item \( A \) symmetric implies \( A = A^T \) and \( A \) skew-symmetric implies \( A = -A^T \). Thus if \( A \) is both symmetric and skew-symmetric it follows that
+            \begin{align*}
+                A^T &= -A^T \\
+                A^T &= 0 \\
+                A &= 0
+            \end{align*}
             
-            \item pending
+            \item
+            \begin{align*}
+                \left[ \frac{1}{2}\left(A + A^T\right) \right]_{ij} &= \frac{1}{2}\left[ A + A^T \right]_{ij} \\
+                &= \frac{1}{2} \left( [A]_{ij} + \left[A^T\right]_{ij} \right) \\
+                &= \frac{1}{2} \left( [A]_{ij} + [A]_{ji} \right) \\
+                &= \frac{1}{2} \left( [A^T]_{ji} + [A]_{ji} \right) \\
+                &= \frac{1}{2} \left[A+A^T\right]_{ji} \\
+                &= \left[ \frac{1}{2}\left(A+A^T\right) \right]_{ji}
+            \end{align*}
             
-            \item pending
+            and 
             
-            \item pending
+            \begin{align*}
+                \left[ \frac{1}{2}\left(A - A^T\right) \right]_{ij} &= \frac{1}{2}\left[ A - A^T \right]_{ij} \\
+                &= \frac{1}{2} \left( [A]_{ij} - \left[A^T\right]_{ij} \right) \\
+                &= \frac{1}{2} \left( [A]_{ij} - [A]_{ji} \right) \\
+                &= \frac{1}{2} \left( [A^T]_{ji} - [A]_{ji} \right) \\
+                &= -\frac{1}{2} \left( [A]_{ji} - [A^T]_{ji} \right) \\
+                &= -\frac{1}{2} \left[A-A^T\right]_{ji} \\
+                &= \left[ -\frac{1}{2}\left(A-A^T\right) \right]_{ji}
+            \end{align*}
+            
+            A simpler proof would be to observe
+            \[ \left( A + A^T \right)^T = A^T + A = A + A^T \]
+            and
+            \[ \left( A - A^T \right)^T = A^T - A = -(A - A^T) \]
+            
+            \item
+            \[ \frac{1}{2}(A + A^T) + \frac{1}{2}(A - A^T) = A \]
+            
+            \item If \( A = S + K \) where \( S \) is symmetric and \( K \) is skew-symmetric then \( S = A - K \) and
+            \begin{align*}
+                A - K &= A^T + K \\
+                A - A^T &= 2K \\
+                \frac{1}{2}\left( A - A^T \right) &= K
+            \end{align*}
+            which implies
+            \[ S = \frac{1}{2}\left( A + A^T \right) \text{ and } K = \frac{1}{2}\left( A - A^T \right) \]
         \end{enumerate}
     \end{proof}
 \end{exercise} %e1.4.36
@@ -1349,8 +1394,46 @@
     Suppose \( A \) is an \( n \times n \) matrix that commutes with all \( n \times n \) matrices; i.e. \( AB = BA \) for all \( B \in \mathcal{M}_{n \times n} \). What can you say about \( A \)?
     
     \begin{proof}
-        pending
+        First we will show that \( A \) must be diagonal. To that end, let \( i_0 \neq j_0 \) be given and define \( B \) so that
+        \[
+            \left[ B \right]_{ij} =
+            \begin{cases}
+                    1 &, i = j = i_0 \\
+                    0 &, \text{otherwise}
+            \end{cases}
+        \]
+        Then
+        \[ [AB]_{i_0j_0} = \sum_{r=1}^n [A]_{i_0r}[B]_{rj_0} = 0 \]
+        and
+        \[ [BA]_{i_0j_0} = \sum_{r=1}^n [B]_{i_0r}[A]_{rj_0} = [B]_{i_0i_0}[A]_{i_0j_0} = [A]_{i_0j_0} \]
+        and since \( AB = BA \), it follows \( [A]_{i_0j_0} = 0 \). Next we will show that \( A = cI_n \). To that end, let \( i_0, j_0 \) be given. Define \( B \) so that
+        \[
+            [B]_{i,j} =
+            \begin{cases}
+                    1 &, (i,j) = (i_0,j_0) \\
+                    0 &, \text{otherwise}
+            \end{cases}
+        \]
+        Then
+        \[
+            [AB]_{ij} = 
+            \begin{cases}
+                    [A]_{i_0i_0} &, (i,j) = (i_0,j_0) \\
+                    0 &, \text{otherwise}
+            \end{cases}
+        \]
+        and
+        \[
+            [BA]_{ij} =
+            \begin{cases}
+                [A]_{j_0j_0} &, (i,j) = (i_0,j_0) \\
+                0 &, \text{otherwise}
+            \end{cases}
+        \]
+        so that
+        \[ [AB]_{i_0j_0} = [A]_{i_0i_0} = [A]_{j_0j_0} = [BA]_{i_0j_0}\]
+        Therefore \( A = cI_n \).
     \end{proof}
 \end{exercise} %e1.4.37
-
+ 
 \subsection{Introduction to Determinants and the Cross Product}
