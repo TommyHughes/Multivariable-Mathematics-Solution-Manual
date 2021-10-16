@@ -72,6 +72,109 @@
     \end{proof}
 \end{exercise}
 
+\begin{exercise} \label{e2.1.3}
+    A string is unwound from a circular reel of radius \( a \), being pulled taut at each instant. Give parametric equations for the tip of the string \( P \) in terms of the angle \( \theta \), as pictured below.
+    
+    \begin{center}
+        \begin{tikzpicture}
+            \draw[thick] (-5,0)
+            -- (5,0); % x-axis
+            
+            \draw[thick] (0,-5)
+            -- (0,5); % y-axis
+            
+            \draw (0,0) circle(1);
+            
+            \draw (0,0)
+            -- (-0.354,0.345) node [anchor=east] {$a$}
+            -- (-0.707,0.707); % r
+            
+            \draw (0.2,0) arc (0:135:0.2); % angle
+            
+            \draw (0.1,0) node [anchor=south west] {$\theta$}; %theta
+            
+            \draw (-0.707,0.707)
+            -- (0.959,2.373);% s
+            
+            \filldraw (0.959,2.373) circle(1pt);
+            
+            \draw (0.959,2.373) node [anchor=south west] {$p$}; % label
+            
+            \draw[domain=0:90,samples=100]
+            plot ({cos(\x)+((0.01745 * \x) * sin(\x))},{sin(\x)-((0.01745 * \x)^2-(0.01745 * \x * sin(\x))^2)^(0.5)}); % 0 <= theta <= pi/2
+            
+            \draw[domain=90:270,samples=100]
+            plot ({cos(\x)+((0.01745 * \x) * sin(\x))},{sin(\x)+((0.01745 * \x)^2-(0.01745 * \x * sin(\x))^2)^(0.5)}); % pi/2 <= theta <= 3pi/2
+            
+            \draw[domain=270:360,samples=100]
+            plot ({cos(\x)+((0.01745 * \x) * sin(\x))},{sin(\x)-((0.01745 * \x)^2-(0.01745 * \x * sin(\x))^2)^(0.5)}); % 3pi/2 <= theta <= 2pi
+        \end{tikzpicture}
+    \end{center}
+    
+    \begin{proof}
+        From the graph we can see that the point \( p \) will be the sum of the radius vector \( r \) and the vector tangent to the circle \( s \). Given that the string is taut, it follows that 
+        
+        \[ r \cdot s = \begin{bmatrix} x \\ y \end{bmatrix} \cdot \begin{bmatrix} a \cos(\theta) \\ a\sin(\theta) \end{bmatrix} = 0 \]. 
+        
+        Furthermore, since the string is being unwound, we know that 
+        
+        \[ \vert \vert s \vert \vert = a \theta \]
+        
+        Thus, we have the system
+        
+        \[
+        \begin{cases}
+            &x\cos(\theta) + y\sin(\theta) = 0 \\
+            &x^2 + y^2 = (a\theta)^2
+        \end{cases}
+        \]
+        
+        Solving for \( x(\theta) \) and \( y(\theta) \), which involves some care when determining the correct sign for the roots, yields
+        
+        \[
+        \mathbf{f}(\theta) = 
+        \begin{cases}
+            \begin{bmatrix} a\cos(\theta) + a\theta\sin(\theta) \\
+            a\sin(\theta) - \sqrt{(a\theta)^2-(a\theta\sin(\theta))^2} \end{bmatrix} &, n2\pi \leq t \leq n2\pi + \frac{\pi}{2} \\
+            \\
+            \begin{bmatrix} a\cos(\theta) + a\theta\sin(\theta) \\
+            a\sin(\theta) + \sqrt{(a\theta)^2+(a\theta\sin(\theta))^2} \end{bmatrix} &, n2\pi + \frac{\pi}{2} < t \leq n2\pi + \frac{3\pi}{2} \\
+            \\
+            \begin{bmatrix} a\cos(\theta) + a\theta\sin(\theta) \\
+            a\sin(\theta) - \sqrt{(a\theta)^2+(a\theta\sin(\theta))^2} \end{bmatrix} &, n2\pi + \frac{3\pi}{2} < t \leq (n+1)2\pi
+        \end{cases}
+        \]
+
+        \begin{center}
+            \begin{tikzpicture}
+                \draw (0,0)
+                -- (1,0);
+                
+                \draw (0,0) circle(1);
+                
+                \draw[->,red] (0,0)
+                -- (-0.354,0.345) node [anchor=east] {$r$}
+                -- (-0.707,0.707); % r
+                
+                \draw (0.2,0) arc (0:135:0.2); % angle
+                
+                \draw (0.1,0) node [anchor=south west] {$\theta$}; %theta
+                
+                \draw[->,blue] (-0.707,0.707)
+                -- (0.959,2.373) ;% s
+                
+                \draw (0.480,1.187) node [anchor=south east] {$s$}; % label
+                
+                \draw[domain=0:90,samples=100]
+                plot ({cos(\x)+((0.01745 * \x) * sin(\x))},{sin(\x)-((0.01745 * \x)^2-(0.01745 * \x * sin(\x))^2)^(0.5)}); % 0 <= theta <= pi/2
+                
+                \draw[domain=90:150,samples=100]
+                plot ({cos(\x)+((0.01745 * \x) * sin(\x))},{sin(\x)+((0.01745 * \x)^2-(0.01745 * \x * sin(\x))^2)^(0.5)}); % pi/2 <= theta <= 3pi/2
+            \end{tikzpicture}
+        \end{center}
+    \end{proof}
+\end{exercise}
+
 \subsection{A Bit of Topology in \( \mathbb{R}^n \)}
 
 \subsection{Limits and Continuity}
