@@ -100,14 +100,8 @@
             
             \draw (0.959,2.373) node [anchor=south west] {$p$}; % label
             
-            \draw[domain=0:90,samples=100]
-            plot ({cos(\x)+((0.01745 * \x) * sin(\x))},{sin(\x)-((0.01745 * \x)^2-(0.01745 * \x * sin(\x))^2)^(0.5)}); % 0 <= theta <= pi/2
-            
-            \draw[domain=90:270,samples=100]
-            plot ({cos(\x)+((0.01745 * \x) * sin(\x))},{sin(\x)+((0.01745 * \x)^2-(0.01745 * \x * sin(\x))^2)^(0.5)}); % pi/2 <= theta <= 3pi/2
-            
-            \draw[domain=270:360,samples=100]
-            plot ({cos(\x)+((0.01745 * \x) * sin(\x))},{sin(\x)-((0.01745 * \x)^2-(0.01745 * \x * sin(\x))^2)^(0.5)}); % 3pi/2 <= theta <= 2pi
+            \draw[domain=0:360,samples=100]
+            plot ({cos(\x)+((0.01745 * \x) * sin(\x))},{sin(\x)-((0.01745 * \x)*cos(\x))});
         \end{tikzpicture}
     \end{center}
     
@@ -129,20 +123,14 @@
         \end{cases}
         \]
         
-        Solving for \( x(\theta) \) and \( y(\theta) \), which involves some care when determining the correct sign for the roots, yields
+        Solving for \( x(\theta) \) and \( y(\theta) \) yields
         
         \[
         \mathbf{f}(\theta) = 
-        \begin{cases}
-            \begin{bmatrix} a\cos(\theta) + a\theta\sin(\theta) \\
-            a\sin(\theta) - \sqrt{(a\theta)^2-(a\theta\sin(\theta))^2} \end{bmatrix} &, 0 \leq t \leq \frac{\pi}{2} \\
-            \\
-            \begin{bmatrix} a\cos(\theta) + a\theta\sin(\theta) \\
-            a\sin(\theta) + \sqrt{(a\theta)^2+(a\theta\sin(\theta))^2} \end{bmatrix} &, \frac{\pi}{2} < t \leq \frac{3\pi}{2} \\
-            \\
-            \begin{bmatrix} a\cos(\theta) + a\theta\sin(\theta) \\
-            a\sin(\theta) - \sqrt{(a\theta)^2+(a\theta\sin(\theta))^2} \end{bmatrix} &, \frac{3\pi}{2} < t \leq 2\pi
-        \end{cases}
+        a \begin{bmatrix} 
+            \cos(\theta) + \theta\sin(\theta) \\ 
+            \sin(\theta) - \theta cos(\theta) 
+        \end{bmatrix}
         \]
 
         \begin{center}
@@ -165,11 +153,8 @@
                 
                 \draw (0.480,1.187) node [anchor=south east] {$s$}; % label
                 
-                \draw[domain=0:90,samples=100]
-                plot ({cos(\x)+((0.01745 * \x) * sin(\x))},{sin(\x)-((0.01745 * \x)^2-(0.01745 * \x * sin(\x))^2)^(0.5)}); % 0 <= theta <= pi/2
-                
-                \draw[domain=90:150,samples=100]
-                plot ({cos(\x)+((0.01745 * \x) * sin(\x))},{sin(\x)+((0.01745 * \x)^2-(0.01745 * \x * sin(\x))^2)^(0.5)}); % pi/2 <= theta <= 3pi/2
+                \draw[domain=0:150,samples=100]
+                plot ({cos(\x)+((0.01745 * \x) * sin(\x))},{sin(\x)-((0.01745 * \x)*cos(\x))});
             \end{tikzpicture}
         \end{center}
     \end{proof}
