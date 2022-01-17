@@ -161,12 +161,58 @@
 \end{exercise}
 
 \begin{exercise} \label{e2.1.4}
-    A wheel of radius \( a \) (perhaps belonging to a train) rolls along the \( x \)-axis. If a point \( P \) (on the wheel) is located a distance \( b \) from the center of the wheel, what are the parametric equations of the its locus as the wheel rolls? (Note that when \( b = a \) we have a cycloid. See the figure below.
+    A wheel of radius \( r \) (perhaps belonging to a train) rolls along the \( x \)-axis. If a point \( P \) (on the wheel) is located a distance \( b \) from the center of the wheel, what are the parametric equations of the its locus as the wheel rolls? (Note that when \( b = r \) we have a cycloid. See the figure below.
     
     % insert graph
     
     \begin{proof}
-        pending
+        Assume the wheel's initial position is as depicted in the figure below. Notice that the center of the wheel forms a locus when rolling whose points are given by
+        \[ \mathbf{c} = \begin{bmatrix} r \theta \\ r \end{bmatrix} \]
+        Thus, the parametric equations of the locus created by \( \mathbf{b} \) are given by
+        \[
+            \mathcal{L} = \left\{ \begin{bmatrix} x \\ y \end{bmatrix}: \begin{bmatrix} x \\ y \end{bmatrix} = \mathbf{c} + \mathbf{b} = \begin{bmatrix} r \theta - b\sin(\theta) \\ r - b\cos(\theta) \end{bmatrix} \right\}
+        \]
+        
+        \begin{center}
+            \begin{tikzpicture}
+                \draw (0,-0.2) -- (0,2.5); % y-axis
+                \draw (-1.2,0) -- (5,0); % x-axis
+                
+                \draw (0,1) circle(1); % wheel in initial position
+                \draw[fill=black] (0,1) circle(0.05); % center of wheel in initial position
+                \draw[->] (0,0) 
+                -- (0,0.98) node [anchor=west] {$c_0$}; % label of center of wheel
+                
+                \draw[->,red,thick] (0,1) 
+                -- (0,0.25) node [anchor=east] {$b_0$}; % b in initial position
+                
+                \draw (2.62,1) circle(1); % wheel some distance away
+                \draw[fill=black] (2.62,1) circle(0.05); % center of wheel some distance away
+                \draw[->] (0,0) 
+                -- (2.56,1) node [anchor=west] {$c_1$}; % center of wheel vector some distance away
+                \draw[->,red,thick] (2.62,1) 
+                -- (2.24,1.65) node [anchor=west] {$b_1$}; % b some distance away
+                \draw[dashed] (2.62,1) -- (2.62,0); % direction of b_0
+                \draw[->] (2.62,0.75) arc (-90:-230:0.3); % angle some distance away
+                \draw (2.62,0.75) node [anchor=north east] {$\theta$}; % angle label
+                
+                \draw[variable=\t,domain=0:4,samples=1000,red] plot ({\t-0.75*sin(deg(\t))},{1-0.75*cos(deg(\t))}); % plot the locus traced by b
+                
+                % r theta label
+                \draw[gray] (0,-0.5) node {$\vert$};
+                \draw[gray] (0,-0.5) -- (1,-0.5);
+                \draw[gray] (1.31,-0.5) node {$r\theta$};
+                \draw[gray] (1.6,-0.5) -- (2.62,-0.5);
+                \draw[gray] (2.62,-0.5) node {$\vert$};
+                
+                % r label
+                \draw[gray] (-1.5,1) node {---};
+                \draw[gray] (-1.5,1) -- (-1.5,0.8);
+                \draw[gray] (-1.5,0.5) node {$r$};
+                \draw[gray] (-1.5,0.22) -- (-1.5,0);
+                \draw[gray] (-1.5,0) node {---};
+            \end{tikzpicture}
+        \end{center}
     \end{proof}
 \end{exercise}
 
